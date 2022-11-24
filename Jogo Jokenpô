@@ -1,0 +1,89 @@
+'''Criando um Programa que Joga Jokenpô com o Usuário'''
+
+#primeiro vamos importar o môdulo random
+from random import randint
+
+#importar o módulo time para cadenciar o nome JOKENPÔ
+from time import sleep
+#definindo os itens
+itens = ('Pedra', 'Papel', 'Tesoura')
+
+#jogada do computador
+computador = randint(0, 2)
+R = 0
+
+while True:
+    #apresentar as opções:
+    print('''Escolha uma Jogada :
+    [0] PEDRA
+    [1] PAPEL
+    [2] TESOURA''')
+
+    #agora o jogador fará sua jogada...
+    jogador = int(input('Faça a sua jogada:' ))
+    if jogador > 2:
+        print('Jogada Inválida!')
+        print('Digite apenas "0", "1" ou "2"')
+        break
+
+    print('JO')
+    sleep(1)
+    print('KEN')
+    sleep(1)
+    print('PÔ!!!')
+    sleep(2)
+    print('-=' * 25)
+
+    #mostrando o que cada um jogou...
+    print(f'O Computador jogou: {itens[computador]}')
+    print(f'O Jogador jogou: {itens[jogador]}')
+    print('-=' * 25)
+
+    if computador == 0:  #computador jogou PEDRA
+        if jogador == 0:
+            print('EMPATE!')
+
+        elif jogador == 1: #jogador jogou PAPEL
+            print('O JOGADOR VENCE!')
+
+        elif jogador == 2: #jogador jogou TESOURA
+            print('O COMPUTADOR VENCEU!')
+
+        else:
+            print('JOGADA INVÁLIDA!')
+
+    if computador == 1:  #computador jogou PAPEL
+        if jogador == 0: #jogador jogou PEDRA
+            print('O COMPUTADOR VENCEU!')
+
+        elif jogador == 1: #jogador jogou PAPEL
+            print('EMPATE!')
+
+        elif jogador == 2: #jogador jogou TESOURA
+            print('O JOGADOR VENCE!')
+
+        else:
+            print('JOGADA INVÁLIDA!')
+
+    if computador == 2: #computador jogou TESOURA
+        if jogador == 0: #jogador jogou PEDRA
+            print('O JOGADOR VENCE!')
+
+        elif jogador == 1: #jogador jogou PAPEL
+            print('O COMPUTADOR VENCEU!')
+
+        elif jogador == 2: #jogador jogou TESOURA
+            print('EMPATE!')
+
+        else:
+            print('JOGADA INVÁLIDA!')
+
+    print('-=' * 25)
+
+    R = input('Deseja continuar(s/n)?')
+    if R == 's':
+        continue
+    if R == 'n':
+        break
+    else:
+        print('Resposta Inválida!')
