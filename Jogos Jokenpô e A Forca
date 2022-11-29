@@ -1,5 +1,8 @@
 '''Criando um Programa que Joga Jokenpô com o Usuário'''
 
+#Importar "pygame"
+import pygame
+
 #primeiro vamos importar o môdulo random
 from random import randint
 
@@ -13,6 +16,8 @@ computador = randint(0, 2)
 R = 0
 
 while True:
+    print('-=' * 5, 'Bem vindo ao JOKENNNPÔ!!!', '-=' * 5)
+    print('-=' * 8, 'Vamos Jogar?', '-=' * 8)
     #apresentar as opções:
     print('''Escolha uma Jogada :
     [0] PEDRA
@@ -80,10 +85,49 @@ while True:
 
     print('-=' * 25)
 
-    R = input('Deseja continuar(s/n)?')
+    R = input('Deseja continuar(s/n) ou Jogar "A Forca"(f)?')
     if R == 's':
         continue
     if R == 'n':
         break
+    if R == 'f':
+        print("***********")
+        print("**Bem vindo ao jogo da Forca!**")
+        print("***********")
+
+        palavra_secreta = "maça".upper()
+        letras_acertadas = ["_" for letra in palavra_secreta]
+
+        enforcou = False
+        acertou = False
+        erros = 0
+
+        print(letras_acertadas)
+        while(not enforcou and not acertou):
+
+            chute = input("Qual letra? ")
+            chute = chute.strip().upper()
+
+            if(chute in palavra_secreta):
+                    index = 0
+                    for letra in palavra_secreta:
+                        if(chute == letra):
+                            letras_acertadas[index] = letra
+                        index += 1
+            else:
+                    erros += 1
+
+            enforcou = erros == 6
+            acertou = "_" not in letras_acertadas
+            print(letras_acertadas)
+
+
+            if(acertou):
+                print("Você ganhou!!")
+            else:
+                print("Você perdeu!!")
+            print("Fim do jogo")
+
     else:
         print('Resposta Inválida!')
+        break
